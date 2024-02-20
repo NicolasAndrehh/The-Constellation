@@ -1,15 +1,39 @@
-import './App.scss'
-import Homepage from './components/homepage'
-import Navbar from './components/navbar'
+import { Route, HashRouter as Router, Routes } from "react-router-dom";
+import "./App.scss";
+import CuadroDetalles from "./components/CuadroDetalles";
+import Cuadros from "./components/Cuadros";
+import Homepage from "./components/Homepage";
+import Navbar from "./components/Navbar";
+import Fotos from "./components/fotos";
 
-function App() {
-
+function Main() {
   return (
     <>
       <Navbar />
       <Homepage />
+      <Cuadros />
+      <Fotos />
     </>
-  )
+  );
 }
 
-export default App
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route
+          path="/cuadro/:id"
+          element={
+            <>
+              <Navbar />
+              <CuadroDetalles />
+            </>
+          }
+        />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
